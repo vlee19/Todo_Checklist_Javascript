@@ -11,31 +11,8 @@ function addTask(){
     span.innerHTML = "\u00d7";
     li.appendChild(span)
   }
-  saveData();
   inputBox.value = "";
 }
-
-function deleteAll(){
-  if(confirm("Are you sure you want to delete all tasks?")){
-    listContainer.innerHTML = "";
-    saveData();
-    showTask();
-  }
-}
-
-function saveData(){
-  localStorage.setItem("data", listContainer.innerHTML);
-}
-
-function showTask(){
-  listContainer.innerHTML = localStorage.getItem("data");
-}
-
-inputBox.addEventListener("keypress", function(event){
-  if(event.key == "Enter"){
-    addTask();
-  }
-})
 
 listContainer.addEventListener("click", function(e){
   if(e.target.tagName === "LI"){
@@ -44,7 +21,5 @@ listContainer.addEventListener("click", function(e){
   else if(e.target.tagName === "SPAN"){
     e.target.parentElement.remove();
   }
-  saveData();
 });
 
-showTask();
